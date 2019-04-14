@@ -1,7 +1,45 @@
 ﻿
+@model IEnumerable<MemberManagementSystem.Models.Member>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "會員管理頁面";
 }
 
-<h2>Index</h2>
+<h2>會員管理頁面</h2>
+
+<div>
+    @if (Model != null)
+    {
+    <table>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>名稱：</td>
+                    <td>@item.Name</td>
+                </tr>
+                <tr>
+                    <td>年齡：</td>
+                    <td>@item.Age</td>
+                </tr>
+                <tr>
+                    <td>地址：</td>
+                    <td>@item.Address</td>
+                </tr>
+                <tr>
+                    <td>電話：</td>
+                    <td>@item.Tel</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    }
+    else
+    {
+        <h3>無會員資料</h3>
+    }
+</div>
+<br />
+<div>
+    @Html.ActionLink("新增會員資料", "AddMember")
+</div>
 

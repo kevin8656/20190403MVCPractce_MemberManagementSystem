@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MemberManagementSystem.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,11 @@ namespace MemberManagementSystem.Controllers
 {
     public class MemberController : Controller
     {
+        MemberService memberService = new MemberService();
         // GET: Member
         public ActionResult Index()
         {
-            return View();
+            return View(memberService.GetAllMember());
         }
     }
 }
