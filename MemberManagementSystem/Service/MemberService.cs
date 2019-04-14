@@ -14,5 +14,11 @@ namespace MemberManagementSystem.Service
         {
             return db.Member.ToList();
         }
+
+        public void InsertMemeberData(Member newMember)
+        {
+            db.Member.Add(newMember);
+            db.SaveChanges();
+        }
     }
 }

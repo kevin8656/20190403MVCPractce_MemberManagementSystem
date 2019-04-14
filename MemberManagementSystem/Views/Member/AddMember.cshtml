@@ -1,0 +1,40 @@
+﻿@model MemberManagementSystem.Models.Member
+@using (Html.BeginForm("AddMember", "Member"))
+{
+    <h3>新增會員</h3>
+    <table>
+        <tr>
+            <td>
+                會員名稱：
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                會員年齡：
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Age)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                會員地址：
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Address)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                會員電話：
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Tel)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="新增會員"/>
+}

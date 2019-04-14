@@ -4,42 +4,44 @@
     ViewBag.Title = "會員管理頁面";
 }
 
+<div id="AddMEmber">
+    @Html.Action("AddMember")
+</div>
+
 <h2>會員管理頁面</h2>
 
 <div>
     @if (Model != null)
     {
-    <table>
-        <tbody>
-            @foreach (var item in Model)
-            {
+        <table border="1">
+            <thead>
                 <tr>
-                    <td>名稱：</td>
-                    <td>@item.Name</td>
+                    <td>名稱</td>
+                    <td>年齡</td>
+                    <td>地址</td>
+                    <td>電話</td>
+                    <td>編輯</td>
+                    <td>刪除</td>
                 </tr>
-                <tr>
-                    <td>年齡：</td>
-                    <td>@item.Age</td>
-                </tr>
-                <tr>
-                    <td>地址：</td>
-                    <td>@item.Address</td>
-                </tr>
-                <tr>
-                    <td>電話：</td>
-                    <td>@item.Tel</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Age</td>
+                        <td>@item.Address</td>
+                        <td>@item.Tel</td>
+                        <td><input type="button" value="編輯" /></td>
+                        <td><input type="button" value="刪除" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     }
     else
     {
         <h3>無會員資料</h3>
     }
-</div>
-<br />
-<div>
-    @Html.ActionLink("新增會員資料", "AddMember")
 </div>
 

@@ -1,4 +1,5 @@
-﻿using MemberManagementSystem.Service;
+﻿using MemberManagementSystem.Models;
+using MemberManagementSystem.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,18 @@ namespace MemberManagementSystem.Controllers
         {
             return View(memberService.GetAllMember());
         }
+
+        public ActionResult AddMember()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult AddMember(Member Data) 
+        {
+            memberService.InsertMemeberData(Data);
+            return RedirectToAction("index");
+                }
+
     }
 }
