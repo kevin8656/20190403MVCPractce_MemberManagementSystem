@@ -23,11 +23,23 @@ namespace MemberManagementSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddMember(Member Data) 
+        public ActionResult AddMember(Member Data)
         {
             memberService.InsertMemeberData(Data);
             return RedirectToAction("index");
-                }
+        }
+
+        public ActionResult EditMember(Member Data)
+        {
+            memberService.EditMemberData(Data);
+            return View();
+        }
+        
+        public ActionResult DeleteMember(int Id)
+        {
+            memberService.DeleteMemberData(Id);
+            return RedirectToAction("index");
+        }
 
     }
 }

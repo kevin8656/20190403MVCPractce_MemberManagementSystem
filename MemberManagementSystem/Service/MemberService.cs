@@ -20,5 +20,20 @@ namespace MemberManagementSystem.Service
             db.Member.Add(newMember);
             db.SaveChanges();
         }
+        public void DeleteMemberData(int Id)
+        {
+            Member DeleteMember = db.Member.SingleOrDefault(x=>x.Id==Id);
+            db.Member.Remove(DeleteMember);
+            db.SaveChanges();
+        }
+        public void EditMemberData(Member EditMember)
+        {
+            Member oldMember = db.Member.SingleOrDefault(x => x.Id == EditMember.Id);
+            oldMember.Name = EditMember.Name;
+            oldMember.Age = EditMember.Age;
+            oldMember.Address = EditMember.Address;
+            oldMember.Tel = EditMember.Tel;
+            db.SaveChanges();
+        }
     }
 }
