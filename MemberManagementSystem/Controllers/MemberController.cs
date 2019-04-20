@@ -19,7 +19,7 @@ namespace MemberManagementSystem.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]

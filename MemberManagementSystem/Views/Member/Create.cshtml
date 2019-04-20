@@ -4,9 +4,6 @@
     ViewBag.Title = "Create";
 }
 
-<h2>新增會員</h2>
-
-
 @using (Html.BeginForm("Create","Member")) 
 {
     @Html.AntiForgeryToken()
@@ -54,9 +51,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
