@@ -17,25 +17,31 @@ namespace MemberManagementSystem.Controllers
             return View(memberService.GetAllMember());
         }
 
-        public ActionResult AddMember()
+        public ActionResult Create()
         {
-            return PartialView();
+            return View();
         }
 
         [HttpPost]
-        public ActionResult AddMember(Member Data)
+        public ActionResult Create(Member Data)
         {
             memberService.InsertMemeberData(Data);
             return RedirectToAction("index");
         }
 
-        public ActionResult EditMember(Member Data)
+        public ActionResult Edit(int Id)
         {
-            memberService.EditMemberData(Data);
-            return View();
+            return View(memberService.GetMemberById(Id));
         }
-        
-        public ActionResult DeleteMember(int Id)
+
+        [HttpPost]
+        public ActionResult Edit(Member MemberData)
+        {
+            memberService.EditMemberData(MemberData);
+            return RedirectToAction("index");
+        }
+
+        public ActionResult Delete(int Id)
         {
             memberService.DeleteMemberData(Id);
             return RedirectToAction("index");

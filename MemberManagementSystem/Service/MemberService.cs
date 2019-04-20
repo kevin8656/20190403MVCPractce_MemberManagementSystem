@@ -15,6 +15,11 @@ namespace MemberManagementSystem.Service
             return db.Member.ToList();
         }
 
+        public Member GetMemberById(int Id)
+        {
+            return db.Member.Find(Id);
+        }
+
         public void InsertMemeberData(Member newMember)
         {
             db.Member.Add(newMember);
@@ -22,13 +27,13 @@ namespace MemberManagementSystem.Service
         }
         public void DeleteMemberData(int Id)
         {
-            Member DeleteMember = db.Member.SingleOrDefault(x=>x.Id==Id);
+            Member DeleteMember = db.Member.SingleOrDefault(x => x.Id == Id);
             db.Member.Remove(DeleteMember);
             db.SaveChanges();
         }
         public void EditMemberData(Member EditMember)
         {
-            Member oldMember = db.Member.SingleOrDefault(x => x.Id == EditMember.Id);
+            Member oldMember = GetMemberById(EditMember.Id);
             oldMember.Name = EditMember.Name;
             oldMember.Age = EditMember.Age;
             oldMember.Address = EditMember.Address;
