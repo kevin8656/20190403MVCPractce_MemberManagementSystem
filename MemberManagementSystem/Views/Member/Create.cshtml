@@ -1,9 +1,9 @@
 ﻿@model MemberManagementSystem.Models.Member
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "新增會員";
 }
-
+<h2>新增會員</h2>
 @using (Html.BeginForm("Create","Member")) 
 {
     @Html.AntiForgeryToken()

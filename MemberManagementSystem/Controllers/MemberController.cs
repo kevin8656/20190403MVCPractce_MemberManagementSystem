@@ -3,6 +3,7 @@ using MemberManagementSystem.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,26 +20,26 @@ namespace MemberManagementSystem.Controllers
 
         public ActionResult Create()
         {
-            return PartialView();
+            return View();
         }
 
         [HttpPost]
         public ActionResult Create(Member Data)
         {
             memberService.InsertMemeberData(Data);
-            return RedirectToAction("index");
+            return RedirectToAction("Index", "Member");
         }
 
-        public ActionResult Edit(int Id)
+        public ActionResult EditView(int Id)
         {
-            return View(memberService.GetMemberById(Id));
+            return PartialView(memberService.GetMemberById(Id));
         }
 
         [HttpPost]
         public ActionResult Edit(Member MemberData)
         {
-            memberService.EditMemberData(MemberData);
-            return RedirectToAction("index");
+                memberService.EditMemberData(MemberData);
+                return RedirectToAction("Index","Member");
         }
 
         public ActionResult Delete(int Id)

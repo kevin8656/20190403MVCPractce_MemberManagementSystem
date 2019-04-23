@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<MemberManagementSystem.Models.Member>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "會員管理系統";
 }
-
 <h2>會員清單</h2>
-
 <p>
-    @Html.Action("Create")
+    <button type="button" onclick="location.href='@Url.Action("Create", "Member")'">新增會員</button>
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -42,13 +41,29 @@
                 @Html.DisplayFor(modelItem => item.Tel)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                <a herf="#" id="Edit" onclick="openEdit(@item.Id)">Edit</a> |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
 
 </table>
+<div id="EditAria">
+
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+    function openEdit(Id) {
+        var url = '@Url.Action("EditView", "Member")';
+            $('#EditAria').load(url, { Id: Id });
+    }
+</script>
+
+<style>
+    a:hover {
+        cursor: pointer;
+    }
+</style>
 
 
 @section Scripts {
